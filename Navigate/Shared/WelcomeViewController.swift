@@ -152,6 +152,11 @@ extension WelcomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(row: tableData[indexPath.row])
         return cell
     }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let deskDetailsVC = UIStoryboard(name: "TableDetails", bundle: nil).instantiateViewController(withIdentifier: "DeskDetailViewController") as! DeskDetailTableViewController
+        self.navigationController?.pushViewController(deskDetailsVC, animated: true)
+    }
 }
 
 public extension UIFont {
