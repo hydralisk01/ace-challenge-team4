@@ -15,9 +15,10 @@ struct ContentView: View {
 }
 
 struct WelcomeScreen: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
-        return WelcomeViewController()
+    func makeUIViewController(context: Context) -> UINavigationController {
+        let navController = UINavigationController(rootViewController: WelcomeViewController())
+        return navController
     }
     
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {}
 }
