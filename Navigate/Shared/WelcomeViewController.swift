@@ -9,6 +9,21 @@ import UIKit
 
 public class WelcomeViewController: UIViewController {
     
+    // MARK: Properties
+    
+    private lazy var scrollView: UIScrollView = {
+      let scrollView = UIScrollView()
+      scrollView.translatesAutoresizingMaskIntoConstraints = false
+      scrollView.addSubview(containerView)
+      return scrollView
+    }()
+    
+    private let containerView: UIView = {
+      let view = UIView()
+      view.translatesAutoresizingMaskIntoConstraints = false
+      return view
+    }()
+    
     let levels = ["Any"] + Level.allCases.map { $0.rawValue }
     let areas = ["Any"] + Area.allCases.map { $0.rawValue }
     let features = ["Any"] + Feature.allCases.map { $0.rawValue }
@@ -19,17 +34,21 @@ public class WelcomeViewController: UIViewController {
     var featureSpecified = false
     var tableData: [WelcomeConfig.Row] = []
     
+    // MARK: Lifecycle
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         welcomeLabel.text = "\(config.welcomeTitle)\n\(config.name)"
+        welcomeLabel.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
         welcomeSubtextLabel.text = config.welcomeSubheading
         setupPickers()
-        view.addSubview(welcomeLabel)
-        view.addSubview(welcomeSubtextLabel)
-        view.addSubview(levelTextField)
-        view.addSubview(areaTextField)
-        view.addSubview(featuresTextField)
-        view.addSubview(tableView)
+        view.addSubview(scrollView)
+        containerView.addSubview(welcomeLabel)
+        containerView.addSubview(welcomeSubtextLabel)
+        containerView.addSubview(levelTextField)
+        containerView.addSubview(areaTextField)
+        containerView.addSubview(featuresTextField)
+        containerView.addSubview(tableView)
         tableData = config.tableViewRows
         tableView.delegate = self
         tableView.dataSource = self
@@ -59,28 +78,44 @@ public class WelcomeViewController: UIViewController {
     
     private func setupLayoutConstraints() {
         NSLayoutConstraint.activate([
-            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
+            welcomeLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            welcomeLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            welcomeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             welcomeLabel.bottomAnchor.constraint(equalTo: welcomeSubtextLabel.topAnchor, constant: -25),
-            welcomeSubtextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            welcomeSubtextLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            welcomeSubtextLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            welcomeSubtextLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             
             levelTextField.topAnchor.constraint(equalTo: welcomeSubtextLabel.bottomAnchor, constant: 20),
-            levelTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            levelTextField.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -5),
+            levelTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            levelTextField.trailingAnchor.constraint(equalTo: containerView.centerXAnchor, constant: -5),
             areaTextField.topAnchor.constraint(equalTo: welcomeSubtextLabel.bottomAnchor, constant: 20),
-            areaTextField.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 5),
-            areaTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            areaTextField.leadingAnchor.constraint(equalTo: containerView.centerXAnchor, constant: 5),
+            areaTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             featuresTextField.topAnchor.constraint(equalTo: levelTextField.bottomAnchor, constant: 8),
-            featuresTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            featuresTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            featuresTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            featuresTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             
             tableView.topAnchor.constraint(equalTo: featuresTextField.bottomAnchor, constant: 20),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+            tableView.heightAnchor.constraint(equalToConstant: 550)
         ])
+    }
+    
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        welcomeLabel.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
     }
     
     // MARK: Text views
@@ -97,18 +132,19 @@ public class WelcomeViewController: UIViewController {
     
     private var welcomeLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(for: .largeTitle, weight: .bold)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.font = .preferredFont(for: .largeTitle, weight: .bold)
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private var welcomeSubtextLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(for: .title3, weight: .semibold)
         label.numberOfLines = 0
+        label.font = .preferredFont(for: .title3, weight: .semibold)
         label.textColor = .gray
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
