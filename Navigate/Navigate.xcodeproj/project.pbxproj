@@ -17,6 +17,10 @@
 		0E28D1452717C1EA0000DADD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28D11B2717C1E40000DADD /* ContentView.swift */; };
 		0E28D1462717C1EA0000DADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E28D11C2717C1EA0000DADD /* Assets.xcassets */; };
 		0E28D1472717C1EA0000DADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E28D11C2717C1EA0000DADD /* Assets.xcassets */; };
+		D081AE44271877BE00ED41EE /* WelcomeViewController+UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D081AE40271877BE00ED41EE /* WelcomeViewController+UIPickerView.swift */; };
+		D081AE45271877BE00ED41EE /* WelcomeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D081AE41271877BE00ED41EE /* WelcomeConfiguration.swift */; };
+		D081AE46271877BE00ED41EE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D081AE42271877BE00ED41EE /* WelcomeViewController.swift */; };
+		D081AE47271877BE00ED41EE /* FilterTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D081AE43271877BE00ED41EE /* FilterTableCell.swift */; };
 		EDD3400627180F5700EFD9ED /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDBF54B2717ECED00B7AC83 /* UserNotifications.framework */; };
 		EDD3400727180F5700EFD9ED /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDBF54D2717ECED00B7AC83 /* UserNotificationsUI.framework */; };
 		EDD3400A27180F5700EFD9ED /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3400927180F5700EFD9ED /* NotificationViewController.swift */; };
@@ -78,6 +82,10 @@
 		0E28D13A2717C1EA0000DADD /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E28D13E2717C1EA0000DADD /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		0E28D1402717C1EA0000DADD /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		D081AE40271877BE00ED41EE /* WelcomeViewController+UIPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WelcomeViewController+UIPickerView.swift"; sourceTree = "<group>"; };
+		D081AE41271877BE00ED41EE /* WelcomeConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeConfiguration.swift; sourceTree = "<group>"; };
+		D081AE42271877BE00ED41EE /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		D081AE43271877BE00ED41EE /* FilterTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableCell.swift; sourceTree = "<group>"; };
 		EDD3400527180F5700EFD9ED /* NotificationContentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationContentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD3400927180F5700EFD9ED /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		EDD3400C27180F5700EFD9ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -146,6 +154,10 @@
 		0E28D1192717C1E40000DADD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				D081AE43271877BE00ED41EE /* FilterTableCell.swift */,
+				D081AE41271877BE00ED41EE /* WelcomeConfiguration.swift */,
+				D081AE42271877BE00ED41EE /* WelcomeViewController.swift */,
+				D081AE40271877BE00ED41EE /* WelcomeViewController+UIPickerView.swift */,
 				0E28D11A2717C1E40000DADD /* NavigateApp.swift */,
 				0E28D11B2717C1E40000DADD /* ContentView.swift */,
 				0E28D11C2717C1EA0000DADD /* Assets.xcassets */,
@@ -405,8 +417,12 @@
 			files = (
 				EDDBF55E2717F54400B7AC83 /* AppDelegate.swift in Sources */,
 				0E28D1442717C1EA0000DADD /* ContentView.swift in Sources */,
+				D081AE44271877BE00ED41EE /* WelcomeViewController+UIPickerView.swift in Sources */,
+				D081AE45271877BE00ED41EE /* WelcomeConfiguration.swift in Sources */,
 				EDDBF5622718011200B7AC83 /* NotificationManager.swift in Sources */,
 				0E28D1422717C1EA0000DADD /* NavigateApp.swift in Sources */,
+				D081AE47271877BE00ED41EE /* FilterTableCell.swift in Sources */,
+				D081AE46271877BE00ED41EE /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
