@@ -53,13 +53,11 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     }
 
     func scheduleNotification() {
-        let userInfo = [String: Any]()
-        let bodyString = "hello!!!"
-
         let content = UNMutableNotificationContent()
-        content.body = bodyString
+        content.title = "Welcome to Eveleigh"
+        content.body = "Don't have a good day, have a great day!"
         content.categoryIdentifier = Identifer.category
-        content.userInfo = userInfo
+        content.userInfo = [:]
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
         let request = UNNotificationRequest(identifier: "test_local_notification", content: content, trigger: trigger)
