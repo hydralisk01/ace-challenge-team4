@@ -16,7 +16,6 @@
 		0E28D1442717C1EA0000DADD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28D11B2717C1E40000DADD /* ContentView.swift */; };
 		0E28D1452717C1EA0000DADD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28D11B2717C1E40000DADD /* ContentView.swift */; };
 		0E28D1462717C1EA0000DADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E28D11C2717C1EA0000DADD /* Assets.xcassets */; };
-		0E28D1472717C1EA0000DADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E28D11C2717C1EA0000DADD /* Assets.xcassets */; };
 		2C78F0302718E39C00EDA914 /* DeskDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78F02D2718E39C00EDA914 /* DeskDetailTableViewController.swift */; };
 		2C78F0312718E39C00EDA914 /* IndoorNavigationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78F02E2718E39C00EDA914 /* IndoorNavigationMapViewController.swift */; };
 		2C78F0322718E39C00EDA914 /* DeskDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78F02F2718E39C00EDA914 /* DeskDetailTableViewCell.swift */; };
@@ -394,7 +393,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E28D1472717C1EA0000DADD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -572,6 +571,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
