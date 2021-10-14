@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notification View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" userLabel="Notification View Controller" customClass="NotificationViewController" customModule="NotificationContentExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleAspectFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="731" height="496"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="200" verticalCompressionResistancePriority="250" image="Axle_Building" translatesAutoresizingMaskIntoConstraints="NO" id="KRH-Cv-FNc">
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KRH-Cv-FNc" secondAttribute="height" multiplier="16:9" id="eFU-U7-eoh"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LT-sI-t8n" userLabel="BottomView">
+                                <rect key="frame" x="0.0" y="414" width="731" height="82"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zrN-Nb-71f">
+                                        <rect key="frame" x="8" y="16" width="715" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Welcome to Eveleigh" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42" userLabel="Heading">
+                                                <rect key="frame" x="0.0" y="0.0" width="715" height="17"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="500" text="Don't have a good day, have a great day!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2j-xb-cSZ" userLabel="Subheading">
+                                                <rect key="frame" x="0.0" y="21" width="715" height="13"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="zrN-Nb-71f" secondAttribute="bottom" constant="32" id="6n9-iN-veh"/>
+                                    <constraint firstItem="zrN-Nb-71f" firstAttribute="leading" secondItem="5LT-sI-t8n" secondAttribute="leading" constant="8" id="A3q-iv-bmc"/>
+                                    <constraint firstAttribute="trailing" secondItem="zrN-Nb-71f" secondAttribute="trailing" constant="8" id="Gbt-KS-ioS"/>
+                                    <constraint firstItem="zrN-Nb-71f" firstAttribute="top" secondItem="5LT-sI-t8n" secondAttribute="top" constant="16" id="Yns-oj-1K8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2BE-c3-nQJ"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5LT-sI-t8n" firstAttribute="leading" secondItem="2BE-c3-nQJ" secondAttribute="leading" id="6wW-fI-kKy"/>
+                            <constraint firstItem="5LT-sI-t8n" firstAttribute="top" secondItem="KRH-Cv-FNc" secondAttribute="bottom" id="FOs-20-vWO"/>
+                            <constraint firstAttribute="trailing" secondItem="KRH-Cv-FNc" secondAttribute="trailing" constant="-5" id="JRw-3K-3hV"/>
+                            <constraint firstItem="2BE-c3-nQJ" firstAttribute="trailing" secondItem="5LT-sI-t8n" secondAttribute="trailing" id="XZh-lv-BFn"/>
+                            <constraint firstAttribute="bottom" secondItem="5LT-sI-t8n" secondAttribute="bottom" id="kIc-jS-wdn"/>
+                            <constraint firstItem="KRH-Cv-FNc" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="kmv-9r-caC"/>
+                            <constraint firstItem="KRH-Cv-FNc" firstAttribute="top" secondItem="S3S-Oj-5AN" secondAttribute="top" id="ym2-Y1-m2b"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="731" height="496"/>
+                    <connections>
+                        <outlet property="label" destination="GcN-lo-r42" id="lpW-cU-7IG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1247.1014492753625" y="-174.77678571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Axle_Building" width="1920" height="1080"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
