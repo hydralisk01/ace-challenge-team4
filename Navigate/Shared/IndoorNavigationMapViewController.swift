@@ -15,5 +15,4 @@ class IndoorNavigationMapViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         title = "Confirmation"
     }
-    
 }

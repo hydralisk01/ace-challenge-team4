@@ -6,8 +6,10 @@
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict>
-			<key>UNNotificationExtensionDefaultContentHidden</key>
+			<key>UNNotificationExtensionUserInteractionEnabled</key>
 			<true/>
+			<key>UNNotificationExtensionDefaultContentHidden</key>
+			<false/>
 			<key>UNNotificationExtensionCategory</key>
 			<array>
 				<string>ARRIVAL</string>

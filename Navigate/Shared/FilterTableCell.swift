@@ -29,25 +29,26 @@ public class FilterTableCell: UITableViewCell {
     
     private let stack: UIStackView = {
         let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .fill
-        stack.alignment = .fill
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.textAlignment = .left
         label.font = .preferredFont(for: .body, weight: .medium)
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let featureTitleLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.textAlignment = .left
         label.font = .preferredFont(for: .subheadline, weight: .light)
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Features:"
         return label
@@ -55,24 +56,27 @@ public class FilterTableCell: UITableViewCell {
     
     private let featuresLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.textAlignment = .left
         label.font = .preferredFont(for: .subheadline, weight: .light)
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
         return label
     }()
     
     private let availabilityLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.textColor = .systemGreen
-        label.textAlignment = .right
         label.font = .preferredFont(for: .caption1, weight: .light)
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
     }()
     
     private func setup() {
+        setupStack()
         addSubview(stack)
         stack.addArrangedSubview(titleLabel)
         stack.addArrangedSubview(availabilityLabel)
@@ -92,6 +96,18 @@ public class FilterTableCell: UITableViewCell {
             featuresLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             featuresLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
+    }
+    
+    private func setupStack() {
+        stack.axis = traitCollection.preferredContentSizeCategory.isAccessibilityCategory ? .vertical : .horizontal
+        stack.distribution = traitCollection.preferredContentSizeCategory.isAccessibilityCategory ? .fillProportionally : .fill
+        stack.alignment = .fill
+        availabilityLabel.textAlignment = traitCollection.preferredContentSizeCategory.isAccessibilityCategory ? .left : .right
+    }
+    
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupStack()
     }
     
 }
