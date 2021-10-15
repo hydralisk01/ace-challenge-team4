@@ -33,6 +33,7 @@ class IndoorMapViewController: UIViewController, MKMapViewDelegate, LevelPickerD
         self.mapView.delegate = self
         self.mapView.register(PointAnnotationView.self, forAnnotationViewWithReuseIdentifier: pointAnnotationViewIdentifier)
         self.mapView.register(LabelAnnotationView.self, forAnnotationViewWithReuseIdentifier: labelAnnotationViewIdentifier)
+        mapView.showsUserLocation = true
 
         // Decode the IMDF data. In this case, IMDF data is stored locally in the current bundle.
         let imdfDirectory = Bundle.main.resourceURL!.appendingPathComponent("IMDFData")
@@ -70,6 +71,11 @@ class IndoorMapViewController: UIViewController, MKMapViewDelegate, LevelPickerD
         
         // Setup the level picker with the shortName of each level
         setupLevelPicker()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        LocationManager.shared.requestLocationAuthorization()
     }
     
     private func showFeaturesForOrdinal(_ ordinal: Int) {
@@ -205,5 +211,40 @@ class IndoorMapViewController: UIViewController, MKMapViewDelegate, LevelPickerD
         precondition(selectedIndex >= 0 && selectedIndex < self.levels.count)
         let selectedLevel = self.levels[selectedIndex]
         showFeaturesForOrdinal(selectedLevel.properties.ordinal)
+    }
+}
+
+
+class LocationManager: NSObject, CLLocationManagerDelegate {
+
+    static let shared = LocationManager()
+    private var locationManager: CLLocationManager = CLLocationManager()
+    private var requestLocationAuthorizationCallback: ((CLAuthorizationStatus) -> Void)?
+
+    public func requestLocationAuthorization() {
+        self.locationManager.delegate = self
+        let currentStatus = CLLocationManager.authorizationStatus()
+
+        // Only ask authorization if it was never asked before
+        guard currentStatus == .notDetermined else { return }
+
+        // Starting on iOS 13.4.0, to get .authorizedAlways permission, you need to
+        // first ask for WhenInUse permission, then ask for Always permission to
+        // get to a second system alert
+        if #available(iOS 13.4, *) {
+            self.requestLocationAuthorizationCallback = { status in
+                if status == .authorizedWhenInUse {
+                    self.locationManager.requestAlwaysAuthorization()
+                }
+            }
+            self.locationManager.requestWhenInUseAuthorization()
+        } else {
+            self.locationManager.requestAlwaysAuthorization()
+        }
+    }
+    // MARK: - CLLocationManagerDelegate
+    public func locationManager(_ manager: CLLocationManager,
+                                didChangeAuthorization status: CLAuthorizationStatus) {
+        self.requestLocationAuthorizationCallback?(status)
     }
 }
