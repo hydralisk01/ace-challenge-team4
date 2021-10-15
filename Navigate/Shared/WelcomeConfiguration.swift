@@ -28,9 +28,9 @@ public struct WelcomeConfig {
     }
     
     init() {
-        welcomeTitle = "Good morning,"
-        name = "John ☀️"
-        welcomeSubheading = "Where would you like to sit today?"
+        welcomeTitle = "Good evening,"
+        name = "John"
+        welcomeSubheading = "Where would you like to sit?"
         tableViewRows = [
             Row(level: .one, area: .north, features: [.singleMonitor, .wheelchairAccessible], availability: 3),
             Row(level: .one, area: .north, features: [.singleMonitor, .heightAdjustable], availability: 2),
