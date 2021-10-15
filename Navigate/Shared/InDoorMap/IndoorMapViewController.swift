@@ -39,6 +39,7 @@ class IndoorMapViewController: UIViewController, MKMapViewDelegate, LevelPickerD
         do {
             let imdfDecoder = IMDFDecoder()
             venue = try imdfDecoder.decode(imdfDirectory)
+            print(imdfDirectory)
         } catch let error {
             print(error)
         }
