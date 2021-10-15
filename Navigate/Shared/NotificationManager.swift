@@ -93,6 +93,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         switch response.actionIdentifier {
         case Identifer.goToDesk:
             print("goToDesk")
+            NavModel.shared.isBooking = false
         case Identifer.findColleague:
             print("findColleague")
         default:
