@@ -13,8 +13,10 @@ class DeskDetailTableViewController: UITableViewController {
         static let deskDetailCellIdentifier = "deskDetailTableViewCell"
         static let deskImageNameArray = ["Desk1", "Desk2", "Desk3", "Desk4"]
         static let deskNumberArray = ["Lvl 3A 25", "Lvl 3A 35", "Lvl 3A 45", "Lvl 3A 65"]
-        static let guidanceText = " Please select a desk from the displayed list"
+        static let guidanceText = " Please select a desk from displayed list below"
     }
+    
+    private let headerLabel = UILabel()
     
     override func viewDidLoad() {
         // Do any additional setup after loading the view.
@@ -32,18 +34,15 @@ class DeskDetailTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = DummyData.guidanceText
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        label.adjustsFontForContentSizeCategory = true
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.minimumScaleFactor = 0.5
-        return label
+        headerLabel.text = DummyData.guidanceText
+        headerLabel.font = .preferredFont(for: .title3, weight: .semibold)
+        headerLabel.numberOfLines = 0
+        headerLabel.lineBreakMode = .byWordWrapping
+        return headerLabel
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        return 100.0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,13 +53,23 @@ class DeskDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DummyData.deskDetailCellIdentifier, for: indexPath)
         if let cell = cell as? DeskDetailTableViewCell {
+            cell.contentView.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
+            cell.deskNumber.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .gray
             cell.deskImageView.layer.cornerRadius = 5.0
             cell.deskImageView.layer.borderWidth = 5.0
-            cell.deskImageView.layer.borderColor = UIColor.black.cgColor
+            cell.deskImageView.layer.borderColor = traitCollection.userInterfaceStyle == .dark ? UIColor.white.cgColor : UIColor.black.cgColor
             cell.deskImageView.image = UIImage(imageLiteralResourceName: DummyData.deskImageNameArray[indexPath.row])
+            cell.deskNumber.font = .preferredFont(for: .title3, weight: .semibold)
             cell.deskNumber.text = DummyData.deskNumberArray[indexPath.row]
         }
         return cell
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        tableView.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
+        tableView.separatorColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
+        headerLabel.textColor = traitCollection.userInterfaceStyle == .dark ?  .white : .gray
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

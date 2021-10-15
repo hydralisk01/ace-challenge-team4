@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+class NavModel: ObservableObject {
+    static let shared = NavModel()
+    @Published var isBooking: Bool = true
+}
+
 @main
 struct NavigateApp: App {
 
@@ -14,7 +19,20 @@ struct NavigateApp: App {
 
     var body: some Scene {
         WindowGroup {
+            RootView()
+        }
+    }
+}
+
+struct RootView: View {
+
+    @ObservedObject private var navModel = NavModel.shared
+
+    var body: some View {
+        if navModel.isBooking {
             ContentView()
+        } else {
+            MapView()
         }
     }
 }
