@@ -16,7 +16,6 @@
 		0E28D1442717C1EA0000DADD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28D11B2717C1E40000DADD /* ContentView.swift */; };
 		0E28D1452717C1EA0000DADD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E28D11B2717C1E40000DADD /* ContentView.swift */; };
 		0E28D1462717C1EA0000DADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E28D11C2717C1EA0000DADD /* Assets.xcassets */; };
-		0E28D1472717C1EA0000DADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E28D11C2717C1EA0000DADD /* Assets.xcassets */; };
 		2C78F0302718E39C00EDA914 /* DeskDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78F02D2718E39C00EDA914 /* DeskDetailTableViewController.swift */; };
 		2C78F0312718E39C00EDA914 /* IndoorNavigationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78F02E2718E39C00EDA914 /* IndoorNavigationMapViewController.swift */; };
 		2C78F0322718E39C00EDA914 /* DeskDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78F02F2718E39C00EDA914 /* DeskDetailTableViewCell.swift */; };
@@ -26,6 +25,7 @@
 		D081AE46271877BE00ED41EE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D081AE42271877BE00ED41EE /* WelcomeViewController.swift */; };
 		D081AE47271877BE00ED41EE /* FilterTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D081AE43271877BE00ED41EE /* FilterTableCell.swift */; };
 		ED8CFE972719094A009288B8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8CFE962719094A009288B8 /* MapView.swift */; };
+		ED8CFE9927190FC7009288B8 /* BackupMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8CFE9827190FC7009288B8 /* BackupMap.storyboard */; };
 		EDD3400627180F5700EFD9ED /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDBF54B2717ECED00B7AC83 /* UserNotifications.framework */; };
 		EDD3400727180F5700EFD9ED /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDBF54D2717ECED00B7AC83 /* UserNotificationsUI.framework */; };
 		EDD3400A27180F5700EFD9ED /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3400927180F5700EFD9ED /* NotificationViewController.swift */; };
@@ -96,6 +96,7 @@
 		D081AE42271877BE00ED41EE /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D081AE43271877BE00ED41EE /* FilterTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableCell.swift; sourceTree = "<group>"; };
 		ED8CFE962719094A009288B8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		ED8CFE9827190FC7009288B8 /* BackupMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BackupMap.storyboard; sourceTree = "<group>"; };
 		EDD3400527180F5700EFD9ED /* NotificationContentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationContentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD3400927180F5700EFD9ED /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		EDD3400C27180F5700EFD9ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -178,6 +179,7 @@
 				EDDBF5612718011200B7AC83 /* NotificationManager.swift */,
 				2C78F0332718E3B500EDA914 /* TableDetails.storyboard */,
 				ED8CFE962719094A009288B8 /* MapView.swift */,
+				ED8CFE9827190FC7009288B8 /* BackupMap.storyboard */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -389,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C78F0342718E3B500EDA914 /* TableDetails.storyboard in Resources */,
+				ED8CFE9927190FC7009288B8 /* BackupMap.storyboard in Resources */,
 				0E28D1462717C1EA0000DADD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

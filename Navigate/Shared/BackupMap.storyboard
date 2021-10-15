@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v6x-Xu-0wf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigate to desk-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController title="Navigate to desk" id="Y6W-OH-hqX" customClass="BackupMapViewController" customModule="Navigate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indoor-map" translatesAutoresizingMaskIntoConstraints="NO" id="qjJ-hi-b3I">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qjJ-hi-b3I" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aCi-kG-j8g"/>
+                            <constraint firstItem="qjJ-hi-b3I" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="cLQ-SJ-I6w"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qjJ-hi-b3I" secondAttribute="trailing" id="n4V-Al-R05"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="qjJ-hi-b3I" secondAttribute="bottom" id="rRM-1u-MTr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VXh-Dc-KnV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-399" y="223"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="287-fr-PCz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v6x-Xu-0wf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LQX-wY-E3e">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="ghw-BU-W95"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JtB-Ww-zA6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1199" y="223"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="indoor-map" width="339" height="498"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
