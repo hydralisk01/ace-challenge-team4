@@ -13,7 +13,6 @@ class IndoorNavigationMapViewController: UIViewController {
         // Do any additional setup after loading the view.
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
-        title = "Indoor map"
+        title = "Confirmation"
     }
-    
 }
