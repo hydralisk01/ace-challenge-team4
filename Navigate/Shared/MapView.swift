@@ -16,7 +16,7 @@ struct MapView: View {
 
 struct MapScreen: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UINavigationController {
-        let navController = UIStoryboard(name: "BackupMap", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        let navController = UIStoryboard(name: "InDoorMap", bundle: nil).instantiateInitialViewController() as! UINavigationController
         return navController
     }
 
