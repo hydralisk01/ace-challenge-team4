@@ -16,12 +16,18 @@ struct MapView: View {
 
 struct MapScreen: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UINavigationController {
-        let vc = UIViewController()
-        vc.title = "Map view controller here"
-        let navController = UINavigationController(rootViewController: vc)
-        navController.title = "Map view controller here"
+        let navController = UIStoryboard(name: "BackupMap", bundle: nil).instantiateInitialViewController() as! UINavigationController
         return navController
     }
 
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {}
+}
+
+class BackupMapViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            NotificationManager.shared.fireArrivalNotification()
+        }
+    }
 }
