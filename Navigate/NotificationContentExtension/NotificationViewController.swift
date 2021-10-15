@@ -19,8 +19,8 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     }
     
     func didReceive(_ notification: UNNotification) {
-        headingLabel.text = notification.request.content.title
-        subheadingLabel?.text = notification.request.content.body
+        headingLabel.text = "Booking details"
+        subheadingLabel?.text = "Desk Lvl 3A 25, 09:00am"
     }
 
 }
