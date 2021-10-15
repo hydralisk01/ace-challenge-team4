@@ -13,7 +13,6 @@ public class WelcomeViewController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
       let scrollView = UIScrollView()
-      scrollView.showsVerticalScrollIndicator = false
       scrollView.translatesAutoresizingMaskIntoConstraints = false
       scrollView.addSubview(containerView)
       return scrollView
@@ -34,42 +33,36 @@ public class WelcomeViewController: UIViewController {
     var areaSpecified = false
     var featureSpecified = false
     var tableData: [WelcomeConfig.Row] = []
-    var textFields: [UITextField] = []
     
     // MARK: Lifecycle
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setupPickers()
-        setupTextFields()
-        addSubviews()
         welcomeLabel.text = "\(config.welcomeTitle)\n\(config.name)"
         welcomeLabel.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
         welcomeSubtextLabel.text = config.welcomeSubheading
-        tableData = config.tableViewRows
-        tableView.separatorColor = traitCollection.userInterfaceStyle == .dark ? .white : .lightGray
-        tableView.delegate = self
-        tableView.dataSource = self
-        setupLayoutConstraints()
-    }
-    
-    private func addSubviews() {
+        setupPickers()
         view.addSubview(scrollView)
         containerView.addSubview(welcomeLabel)
         containerView.addSubview(welcomeSubtextLabel)
-        textFields.forEach { containerView.addSubview($0) }
+        containerView.addSubview(levelTextField)
+        containerView.addSubview(areaTextField)
+        containerView.addSubview(featuresTextField)
         containerView.addSubview(tableView)
+        tableData = config.tableViewRows
+        tableView.delegate = self
+        tableView.dataSource = self
+        setupLayoutConstraints()
     }
     
     private func setupPickers() {
         levelTextField.inputView = levelPickerView
         areaTextField.inputView = areaPickerView
         featuresTextField.inputView = featurePickerView
-        setupTextFields()
+        setupPlaceholders()
         levelTextField.textAlignment = .center
         areaTextField.textAlignment = .center
         featuresTextField.textAlignment = .center
-        
         levelPickerView.delegate = self
         levelPickerView.dataSource = self
         areaPickerView.delegate = self
@@ -81,13 +74,7 @@ public class WelcomeViewController: UIViewController {
         featurePickerView.tag = 3
     }
 
-    private func setupTextFields() {
-        textFields = [levelTextField, areaTextField, featuresTextField]
-        textFields.forEach {
-            $0.layer.borderWidth = 1
-            $0.layer.cornerRadius = 4
-            $0.layer.borderColor = traitCollection.userInterfaceStyle == .dark ? UIColor.white.cgColor : UIColor.lightGray.cgColor
-        }
+    private func setupPlaceholders() {
         if  traitCollection.userInterfaceStyle == .dark {
             levelTextField.attributedPlaceholder = NSAttributedString(string: "Select level", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightText])
             areaTextField.attributedPlaceholder = NSAttributedString(string: "Select area", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightText])
@@ -111,7 +98,7 @@ public class WelcomeViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            welcomeLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
+            welcomeLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             welcomeLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             welcomeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             welcomeLabel.bottomAnchor.constraint(equalTo: welcomeSubtextLabel.topAnchor, constant: -25),
@@ -139,7 +126,7 @@ public class WelcomeViewController: UIViewController {
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         welcomeLabel.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
-        setupTextFields()
+        setupPlaceholders()
     }
     
     // MARK: Text views
@@ -178,9 +165,6 @@ public class WelcomeViewController: UIViewController {
         textField.textAlignment = .center
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.allowsEditingTextAttributes = false
-        textField.accessibilityTraits = UIAccessibilityTraits.staticText
-        textField.accessibilityLabel = "Level text field"
         return textField
     }()
     
@@ -189,9 +173,6 @@ public class WelcomeViewController: UIViewController {
         textField.textAlignment = .center
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.allowsEditingTextAttributes = false
-        textField.accessibilityTraits = UIAccessibilityTraits.staticText
-        textField.accessibilityLabel = "Area text field"
         return textField
     }()
     
@@ -200,9 +181,6 @@ public class WelcomeViewController: UIViewController {
         textField.textAlignment = .center
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.allowsEditingTextAttributes = false
-        textField.accessibilityTraits = UIAccessibilityTraits.staticText
-        textField.accessibilityLabel = "Feature text field"
         return textField
     }()
     
