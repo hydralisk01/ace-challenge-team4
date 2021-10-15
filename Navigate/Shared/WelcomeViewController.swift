@@ -59,9 +59,7 @@ public class WelcomeViewController: UIViewController {
         levelTextField.inputView = levelPickerView
         areaTextField.inputView = areaPickerView
         featuresTextField.inputView = featurePickerView
-        levelTextField.placeholder = "Select level"
-        areaTextField.placeholder = "Select area"
-        featuresTextField.placeholder = "Select feature"
+        setupPlaceholders()
         levelTextField.textAlignment = .center
         areaTextField.textAlignment = .center
         featuresTextField.textAlignment = .center
@@ -75,7 +73,19 @@ public class WelcomeViewController: UIViewController {
         areaPickerView.tag = 2
         featurePickerView.tag = 3
     }
-    
+
+    private func setupPlaceholders() {
+        if  traitCollection.userInterfaceStyle == .dark {
+            levelTextField.attributedPlaceholder = NSAttributedString(string: "Select level", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightText])
+            areaTextField.attributedPlaceholder = NSAttributedString(string: "Select area", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightText])
+            featuresTextField.attributedPlaceholder = NSAttributedString(string: "Select feature", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightText])
+        } else {
+            levelTextField.attributedPlaceholder = NSAttributedString(string: "Select level", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+            areaTextField.attributedPlaceholder = NSAttributedString(string: "Select area", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+            featuresTextField.attributedPlaceholder = NSAttributedString(string: "Select feature", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        }
+    }
+
     private func setupLayoutConstraints() {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -116,6 +126,7 @@ public class WelcomeViewController: UIViewController {
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         welcomeLabel.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
+        setupPlaceholders()
     }
     
     // MARK: Text views
